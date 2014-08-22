@@ -14,9 +14,14 @@
 			<!-- 注册自定义登录拦截器 -->
 			<interceptor name="loginInterceptor"
 				class="cn.itcast.surveypark.struts2.interceptor.LoginInterceptor" />
+				
+			<interceptor name="catchUrlInteceptor" 
+				class="cn.itcast.surveypark.struts2.interceptor.CatchUrlInteceptor"/>
+				
 			<!-- 自定义拦截器栈 -->
 			<interceptor-stack name="surveyparkStack">
 				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="catchUrlInteceptor"/>
 				<interceptor-ref name="defaultStack">
 					<param name="modelDriven.refreshModelBeforeResult">true</param>
 				</interceptor-ref>
@@ -138,9 +143,18 @@
 		<action name="RightAction_*" class="rightAction" method="{1}">
 			<result name="rightsListPage">/rightList.jsp</result>
 			<result name="toAddRightPage">/editRight.jsp</result>
-			<result name="editRightPage"></result>
-			<result name="findAllRights"></result>
+			<result name="editRightPage">/editRight.jsp</result>
+			<result name="findAllRights" type="redirectAction">RightAction_allRightsList</result>
 		</action>
+		
+			<!-- RoleAction -->
+		<action name="RoleAction_*" class="roleAction" method="{1}">
+			<result name="rolesListPage">/roleList.jsp</result>
+			<result name="toAddRolePage">/editRole.jsp</result>
+			<result name="editRolePage">/editRole.jsp</result>
+			<result name="findAllRoles" type="redirectAction">RoleAction_allRolesList</result>
+		</action>
+		
 		
 	</package>
 </struts>

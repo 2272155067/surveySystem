@@ -19,8 +19,8 @@ public class RightAction extends BaseAction<Right>{
 	@Resource
 	private RightService rightService;
 
-	private List allRights;
-	private Integer rightId;
+	private List<Right> allRights;
+	private Integer rightId; //权限id
 	
 	/**
 	 * 查询所有权限列表
@@ -36,29 +36,38 @@ public class RightAction extends BaseAction<Right>{
 		return "toAddRightPage";
 	}
 	
-	//保存/更新权限
-	public String saveOrupdateRight(){
+	//保存/更新权限saveOrUpdateRight
+	public String saveOrUpdateRight(){
 		this.rightService.saveOrupdateRight(model);
 		return "findAllRights";
 	}
 	
-	//修改权限
+	//编辑权限
 	public String editRight(){
+		this.model = this.rightService.getEntity(rightId);
 		return "editRightPage";
-	}
+	} 
 	
 	//删除权限
 	public String deleteRight(){
-		
+		this.rightService.deleteEntity(rightId); 
 		return "findAllRights";//返回权限列表
 	}
 	
+	//批量更新权限
+	public String batchUpdateRights(){
+		String hql = "update Right r set r.rightName = ? where r.id = ?";
+		for(Right r : allRights){
+			this.rightService.batchEntityByHQL(hql,r.getRightName(), r.getId());
+		}
+		return "findAllRights";
+	}
 	
 	
-	public List getAllRights() {
+	public List<Right> getAllRights() {
 		return allRights;
 	}
-	public void setAllRights(List allRights) {
+	public void setAllRights(List<Right> allRights) {
 		this.allRights = allRights;
 	}
 	public Integer getRightId() {

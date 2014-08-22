@@ -12,7 +12,7 @@
 		<s:a action="EngageSurveyAction_findAllAvailableSurveys" namespace="/">[参与调查]</s:a>&nbsp;
 		<s:a action="RegAction_toRegPage" namespace="/">[用户注册]&nbsp;</s:a>
 		[用户授权管理]&nbsp;
-		[角色管理]&nbsp;
+		<s:a action="RoleAction_allRolesList" namespace="/">[角色管理]&nbsp;</s:a>
 		<s:a action="RightAction_allRightsList" namespace="/">[权限管理]&nbsp;</s:a>
 		[日志管理]&nbsp;
 	</div>

@@ -91,10 +91,10 @@
 						<s:set var="rightId" value="id" />
 						<tr>
 							<td>
-								<s:property value="id" />
+								<s:textfield name="allRights[%{#st.index}].id"/>
 							</td>
 							<td>
-								<s:property value="rightName" />
+								<s:textfield name="allRights[%{#st.index}].rightName"/>
 							</td>
 							<td style="text-align: left;">
 							</td>

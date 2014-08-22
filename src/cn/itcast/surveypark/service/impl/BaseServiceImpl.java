@@ -1,5 +1,6 @@
 package cn.itcast.surveypark.service.impl;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,6 +12,15 @@ import cn.itcast.surveypark.service.BaseService;
  * 抽象的service实现,专门用于继承
  */
 public abstract class BaseServiceImpl<T> implements BaseService<T> {
+	
+	
+	private Class<T> clazz ;
+	@SuppressWarnings("unchecked")
+	public BaseServiceImpl() {
+		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+		clazz = (Class<T>) type.getActualTypeArguments()[0];
+	}
+	
 	
 	private BaseDao<T> dao ;
 	

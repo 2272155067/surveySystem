@@ -16,6 +16,11 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
+	<listener>
+		<listener-class>cn.itcast.surveypark.util.ContextDestroyListener</listener-class>
+	</listener>
+	
+	
 	<!-- openSessionInView过滤器,该过滤器必须在struts过滤器之前配置
 	<filter>
 		<filter-name>openSessionInViewFilter</filter-name>
