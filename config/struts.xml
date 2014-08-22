@@ -133,5 +133,14 @@
 			<result name="7">/matrixNormalStatistics.jsp</result>
 			<result name="8">/matrixSelectStatistics.jsp</result>
 		</action>
+		
+		<!-- RightAction -->
+		<action name="RightAction_*" class="rightAction" method="{1}">
+			<result name="rightsListPage">/rightList.jsp</result>
+			<result name="toAddRightPage">/editRight.jsp</result>
+			<result name="editRightPage"></result>
+			<result name="findAllRights"></result>
+		</action>
+		
 	</package>
 </struts>
